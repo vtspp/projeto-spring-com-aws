@@ -1,11 +1,9 @@
 package com.vtspp.resources;
 
+import com.vtspp.domain.Pessoa;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/test")
@@ -16,5 +14,11 @@ public class TestController {
     public ResponseEntity<?> dogTest(@PathVariable String name) {
         log.info("Test Controller - name: {}", name);
         return ResponseEntity.ok(name);
+    }
+
+    @PostMapping("/pessoa")
+    public ResponseEntity<Pessoa> getAllNames (@RequestBody Pessoa pessoa) {
+        log.info("Retornou o objeto {}", pessoa.toString());
+        return ResponseEntity.ok(pessoa);
     }
 }
